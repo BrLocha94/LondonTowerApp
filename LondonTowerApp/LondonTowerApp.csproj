@@ -246,8 +246,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\_instancesScripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\_instancesScripts\SoundController.cs" />
+    <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Manager.cs" />
     <Compile Include="Assets\Scripts\SceneController.cs" />
+    <Compile Include="Assets\Scripts\TutorialController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Lean\Common\Examples\Fonts\OFL.txt" />
