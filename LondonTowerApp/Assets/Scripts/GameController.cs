@@ -6,14 +6,16 @@ public class GameController : MonoBehaviour
 {
     int current_level = 0;
 
+    bool is_holding = false;
 
 	void Start ()
     {
 		
 	}
 	
-	void Update ()
+    public bool getIsHolding()
     {
-		
-	}
+        return is_holding;
+    }
+
 }
