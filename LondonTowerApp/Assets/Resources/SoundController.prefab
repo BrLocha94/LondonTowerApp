@@ -384,3 +384,4 @@ MonoBehaviour:
   background: {fileID: 82642424199720282}
   button: {fileID: 82588133921435868}
   sfx: {fileID: 82522969183790770}
+  error: {fileID: 8300000, guid: ca522baaf348720418c9f5fcabb99408, type: 3}

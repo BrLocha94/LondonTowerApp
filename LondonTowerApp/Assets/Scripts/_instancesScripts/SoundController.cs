@@ -12,6 +12,8 @@ public class SoundController : MonoBehaviour
     private AudioSource button;
     [SerializeField]
     private AudioSource sfx;
+    [SerializeField]
+    private AudioClip error;
 
     private static SoundController _instance;
     public static SoundController instance()
@@ -80,5 +82,19 @@ public class SoundController : MonoBehaviour
             _instance.sfx.clip = param;
             _instance.sfx.Play();
         }
+    }
+
+    public void playError()
+    {
+        if (_instance.is_enabled == true)
+        {
+            playError(_instance.error);
+        }
+    }
+
+    private void playError(AudioClip param)
+    {
+        _instance.sfx.clip = param;
+        _instance.sfx.Play();
     }
 }

@@ -45,6 +45,7 @@ public class Tower : MonoBehaviour
             else
             {
                 //Cant move treatment
+                SoundController.instance().playError();
             }
         }
         else
@@ -61,6 +62,7 @@ public class Tower : MonoBehaviour
             else
             {
                 //cant move treatment
+                SoundController.instance().playError();
             }
         }
     }
