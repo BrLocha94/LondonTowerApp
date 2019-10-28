@@ -69,7 +69,6 @@ public class SoundController : MonoBehaviour
 
     public void playButton()
     {
-        Debug.Log("AQUI");
         if (_instance.is_enabled == true)
             _instance.button.Play();
     }
