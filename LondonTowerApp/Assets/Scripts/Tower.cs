@@ -14,6 +14,8 @@ public class Tower : MonoBehaviour
 
 	void Start ()
     {
+        capacity = positions.Length;
+
         if (controller == null)
         {
             Debug.Log("Controller is not declared");
@@ -23,48 +25,83 @@ public class Tower : MonoBehaviour
             else
                 Debug.Log("Cant find controller");
         }
-
-        capacity = positions.Length;
 	}
 	
     public void onTowerClick(AudioClip param)
     {
-        Debug.Log("ENTROU");
-
-        if (controller.getIsHolding())
+        if (!controller.getChecking())
         {
-            if (current_rings.Count < capacity)
+            if (controller.getIsHolding())
             {
-                //move from hand to ring
-                //add to current_rings
-                //play move sfx sound
-                SoundController.instance().playSfx(param);
-
-                //modify is holding on controller
+                if (current_rings.Count < capacity)
+                {
+                    //move from hand to ring
+                    downCurrentRing();
+                    //play move sfx sound
+                    SoundController.instance().playSfx(param);
+                }
+                else
+                {
+                    //Cant move treatment
+                    SoundController.instance().playError();
+                }
             }
             else
             {
-                //Cant move treatment
-                SoundController.instance().playError();
+                if (current_rings.Count > 0)
+                {
+                    //move from tower to hand
+                    upLastRing();
+                    //play move sfx sound
+                    SoundController.instance().playSfx(param);
+                }
+                else
+                {
+                    //cant move treatment
+                    SoundController.instance().playError();
+                }
             }
         }
         else
         {
-            if(current_rings.Count > 0)
-            {
-                //move from tower to hand
-                //remove from current_rings
-                //play move sfx sound
-                SoundController.instance().playSfx(param);
-
-                //modify is holding on controller
-            }
-            else
-            {
-                //cant move treatment
-                SoundController.instance().playError();
-            }
+            Debug.Log("Waiting to return");
         }
     }
 
+    public void upLastRing()
+    {
+        if(current_rings.Count > 0)
+        {
+            Ring lastRing = current_rings[current_rings.Count - 1];
+            controller.setCurrentRing(lastRing);
+            current_rings.RemoveAt(current_rings.Count - 1);
+        }
+    }
+
+    public void downCurrentRing()
+    {
+        if (current_rings.Count < capacity)
+        {
+            Ring lastRing = controller.getCurrentRing();
+            controller.setCurrentRing(null);
+            current_rings.Add(lastRing);
+        }
+    }
+
+    public int getValueCount()
+    {
+        int result = 0;
+
+        for(int i = 0; i < current_rings.Count; i++)
+        {
+            result += current_rings[i].getValue();
+        }
+
+        return result;
+    }
+
+    public Transform getPosition(int param)
+    {
+        return positions[param];
+    }
 }
