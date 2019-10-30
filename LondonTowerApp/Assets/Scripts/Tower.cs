@@ -5,6 +5,7 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     public GameController controller;
+    public Transform pos_target;
 
     [SerializeField]
     private Transform[] positions;
@@ -68,12 +69,23 @@ public class Tower : MonoBehaviour
         }
     }
 
+    public void addRing(Ring param)
+    {
+        current_rings.Add(param);
+    }
+
+    public void clearRings()
+    {
+        current_rings = new List<Ring>();
+    }
+
     public void upLastRing()
     {
         if(current_rings.Count > 0)
         {
             Ring lastRing = current_rings[current_rings.Count - 1];
             controller.setCurrentRing(lastRing);
+            controller.moveRingUp(pos_target);
             current_rings.RemoveAt(current_rings.Count - 1);
         }
     }
@@ -83,9 +95,26 @@ public class Tower : MonoBehaviour
         if (current_rings.Count < capacity)
         {
             Ring lastRing = controller.getCurrentRing();
-            controller.setCurrentRing(null);
             current_rings.Add(lastRing);
+            controller.moveRingDown(pos_target, positions[current_rings.Count - 1]);
+            controller.setCurrentRing(null);
         }
+    }
+
+    public Ring getRing(int index)
+    {
+        if(index >= current_rings.Count)
+        {
+            Debug.Log("Capacity overflow");
+            return null;
+        }
+
+        return current_rings[index];
+    }
+
+    public int getCurrentRingsCount()
+    {
+        return current_rings.Count;
     }
 
     public int getValueCount()
