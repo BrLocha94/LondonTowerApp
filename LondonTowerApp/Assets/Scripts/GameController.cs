@@ -135,19 +135,9 @@ public class GameController : MonoBehaviour
     {
         checking = true;
 
-        //MOVE AND WAIT COROUTINES
         Debug.Log("Initiated move up routine");
 
         StartCoroutine(moveUp(pos_target));
-
-        //iTween.MoveTo(current_ring.gameObject, iTween.Hash(
-        //                                       "position", pos_target.position,
-        //                                      "time", 1f));
-
-        //StartCoroutine(countTimeRoutine(1f));
-
-        //is_holding = true;
-        //checking = false;
     }
 
     IEnumerator moveUp(Transform pos_target)
@@ -156,17 +146,21 @@ public class GameController : MonoBehaviour
                                                "position", pos_target.position,
                                                "time", 1f));
 
+        SoundController.instance().playMovement();
+
         yield return new WaitForSeconds(1f);
 
         iTween.RotateBy(current_ring.gameObject, iTween.Hash(
                                                  "z", 2f,
-                                                 "time", 0.9f));
+                                                 "time", 0.5f));
 
         iTween.MoveTo(current_ring.gameObject, iTween.Hash(
                                                "position", position_holder.position,
-                                               "time", 1f));
+                                               "time", 0.5f));
 
-        yield return new WaitForSeconds(1f);
+        SoundController.instance().playFlip();
+
+        yield return new WaitForSeconds(0.6f);
 
         current_ring.gameObject.transform.rotation = Quaternion.identity;
 
@@ -178,53 +172,32 @@ public class GameController : MonoBehaviour
     {
         checking = true;
 
-        //MOVE AND WAIT COROUTINES
         Debug.Log("Initiated mode down routine");
 
         StartCoroutine(moveDown(pos_target, pos_destiny));
-
-        //iTween.MoveTo(current_ring.gameObject, iTween.Hash(
-        //                                       "position", pos_target.position,
-        //                                       "time", 1f));
-
-        //countTimeRoutine(1f);
-
-        //iTween.MoveTo(current_ring.gameObject, iTween.Hash(
-        //                                       "position", pos_destiny.position,
-        //                                       "time", 1f));
-
-        //countTimeRoutine(1f);
-
-        //bool result = checkGameClear();
-
-        //if (result == true)
-        //{
-        //    gameClearRoutine();
-        //}
-        //else
-        //{
-        //    is_holding = false;
-        //    checking = false;
-        //}
     }
 
     IEnumerator moveDown(Transform pos_target, Transform pos_destiny)
     {
         iTween.MoveTo(current_ring.gameObject, iTween.Hash(
                                                "position", pos_target.position,
-                                               "time", 1f));
+                                               "time", 0.5f));
 
         iTween.RotateBy(current_ring.gameObject, iTween.Hash(
                                                  "z", 2f,
-                                                 "time", 0.9f));
+                                                 "time", 0.5f));
 
-        yield return new WaitForSeconds(1f);
+        SoundController.instance().playFlip();
+
+        yield return new WaitForSeconds(0.6f);
 
         current_ring.gameObject.transform.rotation = Quaternion.identity;
 
         iTween.MoveTo(current_ring.gameObject, iTween.Hash(
                                                "position", pos_destiny.position,
                                                "time", 1f));
+
+        SoundController.instance().playMovement();
 
         yield return new WaitForSeconds(1f);
 

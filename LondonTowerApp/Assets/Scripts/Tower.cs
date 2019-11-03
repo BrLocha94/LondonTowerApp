@@ -35,38 +35,20 @@ public class Tower : MonoBehaviour
             if (controller.getIsHolding())
             {
                 if (current_rings.Count < capacity)
-                {
-                    //move from hand to ring
                     downCurrentRing();
-                    //play move sfx sound
-                    SoundController.instance().playSfx(param);
-                }
                 else
-                {
-                    //Cant move treatment
                     SoundController.instance().playError();
-                }
             }
             else
             {
                 if (current_rings.Count > 0)
-                {
-                    //move from tower to hand
                     upLastRing();
-                    //play move sfx sound
-                    SoundController.instance().playSfx(param);
-                }
                 else
-                {
-                    //cant move treatment
                     SoundController.instance().playError();
-                }
             }
         }
         else
-        {
-            Debug.Log("Waiting to return");
-        }
+            Debug.Log("Controller is checking, waiting to return");
     }
 
     public void addRing(Ring param)
@@ -97,7 +79,6 @@ public class Tower : MonoBehaviour
             Ring lastRing = controller.getCurrentRing();
             current_rings.Add(lastRing);
             controller.moveRingDown(pos_target, positions[current_rings.Count - 1]);
-            //controller.setCurrentRing(null);
         }
     }
 

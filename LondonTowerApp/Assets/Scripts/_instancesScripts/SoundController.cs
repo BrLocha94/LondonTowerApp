@@ -12,8 +12,15 @@ public class SoundController : MonoBehaviour
     private AudioSource button;
     [SerializeField]
     private AudioSource sfx;
+
     [SerializeField]
     private AudioClip error;
+    [SerializeField]
+    private AudioClip flip;
+    [SerializeField]
+    private AudioClip movement;
+    [SerializeField]
+    private AudioClip game_clear;
 
     private static SoundController _instance;
     public static SoundController instance()
@@ -84,6 +91,20 @@ public class SoundController : MonoBehaviour
         }
     }
 
+    public void playMovement()
+    {
+        if (_instance.is_enabled == true)
+        {
+            playMovement(_instance.movement);
+        }
+    }
+
+    private void playMovement(AudioClip param)
+    {
+        _instance.sfx.clip = param;
+        _instance.sfx.Play();
+    }
+
     public void playError()
     {
         if (_instance.is_enabled == true)
@@ -93,6 +114,34 @@ public class SoundController : MonoBehaviour
     }
 
     private void playError(AudioClip param)
+    {
+        _instance.sfx.clip = param;
+        _instance.sfx.Play();
+    }
+
+    public void playFlip()
+    {
+        if (_instance.is_enabled == true)
+        {
+            playFlip(_instance.flip);
+        }
+    }
+
+    private void playFlip(AudioClip param)
+    {
+        _instance.sfx.clip = param;
+        _instance.sfx.Play();
+    }
+
+    public void playGameClear()
+    {
+        if (_instance.is_enabled == true)
+        {
+            playGameClear(_instance.game_clear);
+        }
+    }
+
+    private void playGameClear(AudioClip param)
     {
         _instance.sfx.clip = param;
         _instance.sfx.Play();

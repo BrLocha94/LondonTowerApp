@@ -385,3 +385,6 @@ MonoBehaviour:
   button: {fileID: 82588133921435868}
   sfx: {fileID: 82522969183790770}
   error: {fileID: 8300000, guid: ca522baaf348720418c9f5fcabb99408, type: 3}
+  flip: {fileID: 8300000, guid: adb84e493a925ea4ead91b1c5e49931b, type: 3}
+  movement: {fileID: 8300000, guid: 5fe3fa366a568b147aff882c4ae077c1, type: 3}
+  game_clear: {fileID: 8300000, guid: 5918e230a9d4058499c38c12d44fdf04, type: 3}
