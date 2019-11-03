@@ -136,11 +136,25 @@ public class GameController : MonoBehaviour
         //MOVE AND WAIT COROUTINES
         Debug.Log("Initiated move up routine");
 
+        StartCoroutine(moveUp(pos_target));
+
+        //iTween.MoveTo(current_ring.gameObject, iTween.Hash(
+        //                                       "position", pos_target.position,
+        //                                      "time", 1f));
+
+        //StartCoroutine(countTimeRoutine(1f));
+
+        //is_holding = true;
+        //checking = false;
+    }
+
+    IEnumerator moveUp(Transform pos_target)
+    {
         iTween.MoveTo(current_ring.gameObject, iTween.Hash(
                                                "position", pos_target.position,
                                                "time", 1f));
 
-        StartCoroutine(countTimeRoutine(1f));
+        yield return new WaitForSeconds(1f);
 
         is_holding = true;
         checking = false;
@@ -153,17 +167,48 @@ public class GameController : MonoBehaviour
         //MOVE AND WAIT COROUTINES
         Debug.Log("Initiated mode down routine");
 
+        StartCoroutine(moveDown(pos_target, pos_destiny));
+
+        //iTween.MoveTo(current_ring.gameObject, iTween.Hash(
+        //                                       "position", pos_target.position,
+        //                                       "time", 1f));
+
+        //countTimeRoutine(1f);
+
+        //iTween.MoveTo(current_ring.gameObject, iTween.Hash(
+        //                                       "position", pos_destiny.position,
+        //                                       "time", 1f));
+
+        //countTimeRoutine(1f);
+
+        //bool result = checkGameClear();
+
+        //if (result == true)
+        //{
+        //    gameClearRoutine();
+        //}
+        //else
+        //{
+        //    is_holding = false;
+        //    checking = false;
+        //}
+    }
+
+    IEnumerator moveDown(Transform pos_target, Transform pos_destiny)
+    {
         iTween.MoveTo(current_ring.gameObject, iTween.Hash(
                                                "position", pos_target.position,
                                                "time", 1f));
 
-        countTimeRoutine(1f);
+        yield return new WaitForSeconds(1f);
 
         iTween.MoveTo(current_ring.gameObject, iTween.Hash(
                                                "position", pos_destiny.position,
                                                "time", 1f));
 
-        countTimeRoutine(1f);
+        yield return new WaitForSeconds(1f);
+
+        setCurrentRing(null);
 
         bool result = checkGameClear();
 
@@ -176,10 +221,5 @@ public class GameController : MonoBehaviour
             is_holding = false;
             checking = false;
         }
-    }
-
-    IEnumerator countTimeRoutine(float time)
-    {
-        yield return new WaitForSeconds(time);
     }
 }

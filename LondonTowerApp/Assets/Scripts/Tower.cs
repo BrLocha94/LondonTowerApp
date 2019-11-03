@@ -97,7 +97,7 @@ public class Tower : MonoBehaviour
             Ring lastRing = controller.getCurrentRing();
             current_rings.Add(lastRing);
             controller.moveRingDown(pos_target, positions[current_rings.Count - 1]);
-            controller.setCurrentRing(null);
+            //controller.setCurrentRing(null);
         }
     }
 
