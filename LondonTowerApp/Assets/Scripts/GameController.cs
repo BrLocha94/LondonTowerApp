@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     bool checking = false;
     Ring current_ring = null;
 
+    public Transform position_holder;
+
     [SerializeField]
     private Tower[] towers;
     [SerializeField]
@@ -156,6 +158,18 @@ public class GameController : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        iTween.RotateBy(current_ring.gameObject, iTween.Hash(
+                                                 "z", 2f,
+                                                 "time", 0.9f));
+
+        iTween.MoveTo(current_ring.gameObject, iTween.Hash(
+                                               "position", position_holder.position,
+                                               "time", 1f));
+
+        yield return new WaitForSeconds(1f);
+
+        current_ring.gameObject.transform.rotation = Quaternion.identity;
+
         is_holding = true;
         checking = false;
     }
@@ -200,7 +214,13 @@ public class GameController : MonoBehaviour
                                                "position", pos_target.position,
                                                "time", 1f));
 
+        iTween.RotateBy(current_ring.gameObject, iTween.Hash(
+                                                 "z", 2f,
+                                                 "time", 0.9f));
+
         yield return new WaitForSeconds(1f);
+
+        current_ring.gameObject.transform.rotation = Quaternion.identity;
 
         iTween.MoveTo(current_ring.gameObject, iTween.Hash(
                                                "position", pos_destiny.position,
