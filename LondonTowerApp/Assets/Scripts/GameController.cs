@@ -83,25 +83,31 @@ public class GameController : MonoBehaviour
         {
             level_clear_config = level.getRingsTower(i);
 
-            for (int j = 0; j < level_clear_config.Length; j++)
+            Debug.Log("Level " + i);
+
+            if (towers[i].getCurrentRingsCount() != level_clear_config.Length)
             {
-                if (towers[i].getCurrentRingsCount() == 0 || towers[i].getCurrentRingsCount() < level_clear_config.Length)
+                Debug.Log("Tower " + i + " config is not correct");
+                return false;
+            }
+            else
+            {
+                for (int j = 0; j < level_clear_config.Length; j++)
                 {
-                    Debug.Log("Tower " + j + " config is not correct");
-                    return false;
+                    Debug.Log("Towers " + j);
+
+                    ring_object = level_clear_config[j];
+                    ring_tower = towers[i].getRing(j);
+
+                    if (ring_object.getValue() != ring_tower.getValue())
+                    {
+                        Debug.Log("Diferent ring config");
+                        return false;
+                    }
+
+                    ring_object = null;
+                    ring_tower = null;
                 }
-
-                ring_object = level_clear_config[j];
-                ring_tower = towers[i].getRing(j);
-
-                if (ring_object.getValue() != ring_tower.getValue())
-                {
-                    Debug.Log("Diferent ring config");
-                    return false;
-                }
-
-                ring_object = null;
-                ring_tower = null;
             }
 
             level_clear_config = null;
