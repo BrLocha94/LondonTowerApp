@@ -56,16 +56,16 @@ public class SoundController : MonoBehaviour
 
         if (_instance.is_enabled == true)
         {
-            _instance.background.mute = true;
-            _instance.button.mute = true;
-            _instance.sfx.mute = true;
+            _instance.background.mute = false;
+            _instance.button.mute = false;
+            _instance.sfx.mute = false;
             Debug.Log("Sound ON");
         }
         else
         {
-            _instance.background.mute = false;
-            _instance.button.mute = false;
-            _instance.sfx.mute = false;
+            _instance.background.mute = true;
+            _instance.button.mute = true;
+            _instance.sfx.mute = true;
             Debug.Log("Sound OFF");
         }
     }
