@@ -63,12 +63,18 @@ public class GameController : MonoBehaviour
     {
         current_level++;
         if (current_level >= levels.Length)
-            gameClearRoutine();
+            gameOverRoutine();
         else
             setInitialConfig();
     }
 
     void gameClearRoutine()
+    {
+        SoundController.instance().playGameClear();
+        advanceLevel();
+    }
+
+    void gameOverRoutine()
     {
 
     }
@@ -83,25 +89,25 @@ public class GameController : MonoBehaviour
         {
             level_clear_config = level.getRingsTower(i);
 
-            Debug.Log("Level " + i);
+            //Debug.Log("Level " + i);
 
             if (towers[i].getCurrentRingsCount() != level_clear_config.Length)
             {
-                Debug.Log("Tower " + i + " config is not correct");
+                //Debug.Log("Tower " + i + " config is not correct");
                 return false;
             }
             else
             {
                 for (int j = 0; j < level_clear_config.Length; j++)
                 {
-                    Debug.Log("Towers " + j);
+                    //Debug.Log("Towers " + j);
 
                     ring_object = level_clear_config[j];
                     ring_tower = towers[i].getRing(j);
 
                     if (ring_object.getValue() != ring_tower.getValue())
                     {
-                        Debug.Log("Diferent ring config");
+                        //Debug.Log("Diferent ring config");
                         return false;
                     }
 
@@ -115,6 +121,11 @@ public class GameController : MonoBehaviour
 
         Debug.Log("Correct ring config");
         return true;
+    }
+
+    public Level getCurrentLevel()
+    {
+        return levels[current_level];
     }
 
     public bool getChecking()
@@ -141,7 +152,7 @@ public class GameController : MonoBehaviour
     {
         checking = true;
 
-        Debug.Log("Initiated move up routine");
+        //Debug.Log("Initiated move up routine");
 
         StartCoroutine(moveUp(pos_target));
     }
@@ -178,7 +189,7 @@ public class GameController : MonoBehaviour
     {
         checking = true;
 
-        Debug.Log("Initiated mode down routine");
+        //Debug.Log("Initiated mode down routine");
 
         StartCoroutine(moveDown(pos_target, pos_destiny));
     }

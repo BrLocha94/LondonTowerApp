@@ -253,6 +253,7 @@
     <Compile Include="Assets\Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\Tower.cs" />
     <Compile Include="Assets\Scripts\TutorialController.cs" />
+    <Compile Include="Assets\Scripts\WindowManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Lean\Common\Examples\Fonts\OFL.txt" />
