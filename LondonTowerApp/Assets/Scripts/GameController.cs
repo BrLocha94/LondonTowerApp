@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
     Ring current_ring = null;
 
     public WindowManager window_manager;
+    public GameObject block;
+    public InputWindow window_input;
 
     public Transform position_holder;
 
@@ -22,8 +24,16 @@ public class GameController : MonoBehaviour
 
 	void Start ()
     {
-        setInitialConfig();
+        block.SetActive(true);
+        window_input.inTransition();
+        //setInitialConfig();
 	}
+
+    public void startGame()
+    {
+        block.SetActive(false);
+        setInitialConfig();
+    }
 	
     void setInitialConfig()
     {

@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rings_tower_01:
-  - {fileID: 0}
+  - {fileID: 114365142904434066, guid: 7ce8ef10b8653bc4193203c1fd7b63a2, type: 2}
   rings_tower_02:
   - {fileID: 0}
   - {fileID: 0}
