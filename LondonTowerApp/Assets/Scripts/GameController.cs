@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     bool checking = false;
     Ring current_ring = null;
 
+    public WindowManager window_manager;
+
     public Transform position_holder;
 
     [SerializeField]
@@ -57,6 +59,8 @@ public class GameController : MonoBehaviour
             level_config = null;
             ring_object = null;
         }
+
+        window_manager.updateHud();
     }
 
     public void advanceLevel()

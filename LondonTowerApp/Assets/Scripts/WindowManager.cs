@@ -26,13 +26,12 @@ public class WindowManager : MonoBehaviour
             if (controllerObject != null)
             {
                 game_controller = controllerObject.GetComponent<GameController>();
-                updateHud();
+                //updateHud();
             }
             else
                 Debug.Log("GameController not found");
         }
-        else
-            updateHud();
+        
     }
 	
 	public void updateHud()
