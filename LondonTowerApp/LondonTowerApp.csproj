@@ -244,12 +244,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\_instancesScripts\GlobalData.cs" />
     <Compile Include="Assets\Scripts\_instancesScripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\_instancesScripts\SoundController.cs" />
+    <Compile Include="Assets\Scripts\CardBox.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\InputWindow.cs" />
     <Compile Include="Assets\Scripts\Level.cs" />
     <Compile Include="Assets\Scripts\Manager.cs" />
+    <Compile Include="Assets\Scripts\ResultsController.cs" />
     <Compile Include="Assets\Scripts\Ring.cs" />
     <Compile Include="Assets\Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\Tower.cs" />

@@ -7,12 +7,14 @@ public class Manager : MonoBehaviour
     SoundController soundController;
     PlayerData playerData;
     SceneController sceneController;
+    GlobalData globalData;
 
 	void Start ()
     {
         soundController = SoundController.instance();
         playerData = PlayerData.instance();
         sceneController = SceneController.instance();
+        globalData = GlobalData.instance();
 	}
     
     public void changeScene(string param)

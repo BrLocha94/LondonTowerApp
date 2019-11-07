@@ -6,7 +6,8 @@ public class PlayerData : MonoBehaviour
 {
     public int levels;
 
-    string name = "";
+    string player_name = "";
+    int age = 0;
     List<int> level_movements;
 
     private static PlayerData _instance;
@@ -34,31 +35,63 @@ public class PlayerData : MonoBehaviour
 
     void Start()
     {
+        StartData();
+    }
+
+    public void FlushData()
+    {
+        for (int i = 0; i < levels; i++)
+        {
+            _instance.level_movements.RemoveAt(0);
+        }
+
+        StartData();
+    }
+
+    void StartData()
+    {
         _instance.level_movements = new List<int>();
 
-        for(int i = 0; i < levels; i++)
+        for (int i = 0; i < levels; i++)
         {
             _instance.level_movements.Add(0);
         }
+
+        _instance.player_name = "";
+        _instance.age = 0;
     }
 
-    public List<int> getLevelMovements()
+    #region GETS AND SETS
+
+    public List<int> GetLevelMovements()
     {
         return _instance.level_movements;
     }
 
-    public void setLevelMovement(int param, int value)
+    public void SetLevelMovement(int param, int value)
     {
         _instance.level_movements[param] = value;
     }
 
-    public void setName(string value)
+    public void SetName(string value)
     {
-        _instance.name = value;
+        _instance.player_name = value;
     }
 
-    public string getName()
+    public string GetName()
     {
-        return _instance.name;
+        return _instance.player_name;
     }
+
+    public void SetAge(int value)
+    {
+        _instance.age = value;
+    }
+
+    public int GetAge()
+    {
+        return _instance.age;
+    }
+
+    #endregion
 }

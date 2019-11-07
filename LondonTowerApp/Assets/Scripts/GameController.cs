@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
 	void Start ()
     {
         block.SetActive(true);
-        window_input.inTransition();
+        window_input.InTransition();
         //setInitialConfig();
 	}
 

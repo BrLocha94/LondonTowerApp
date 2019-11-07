@@ -1,0 +1,16 @@
+{
+    "patients_list": [
+        {
+		    "name": "BRUNO",
+            "age": 25
+		},
+		{
+		    "name": "ANDRE",
+            "age": 24
+		},
+		{
+		    "name": "ERICK",
+            "age": 365
+		}
+	]
+}
