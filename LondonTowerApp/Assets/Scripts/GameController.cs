@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     Ring current_ring = null;
 
     public WindowManager window_manager;
+    public GameClearWindow window_clear;
     public GameObject block;
     public InputWindow window_input;
 
@@ -90,7 +91,8 @@ public class GameController : MonoBehaviour
 
     void gameOverRoutine()
     {
-
+        block.SetActive(true);
+        window_clear.InTransition();
     }
 
     bool checkGameClear()

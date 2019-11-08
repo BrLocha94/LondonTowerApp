@@ -7,7 +7,7 @@ public class PlayerData : MonoBehaviour
     public int levels;
 
     string player_name = "";
-    int age = 0;
+    int player_age = 0;
     List<int> level_movements;
 
     private static PlayerData _instance;
@@ -38,6 +38,11 @@ public class PlayerData : MonoBehaviour
         StartData();
     }
 
+    public void SaveData()
+    {
+        GlobalData.instance().AddPatient(_instance.player_name, _instance.player_age);
+    }
+
     public void FlushData()
     {
         for (int i = 0; i < levels; i++)
@@ -58,7 +63,7 @@ public class PlayerData : MonoBehaviour
         }
 
         _instance.player_name = "";
-        _instance.age = 0;
+        _instance.player_age = 0;
     }
 
     #region GETS AND SETS
@@ -73,24 +78,24 @@ public class PlayerData : MonoBehaviour
         _instance.level_movements[param] = value;
     }
 
-    public void SetName(string value)
+    public void SetPlayerName(string value)
     {
         _instance.player_name = value;
     }
 
-    public string GetName()
+    public string GetPlayerName()
     {
         return _instance.player_name;
     }
 
-    public void SetAge(int value)
+    public void SetPlayerAge(int value)
     {
-        _instance.age = value;
+        _instance.player_age = value;
     }
 
-    public int GetAge()
+    public int GetPlayerAge()
     {
-        return _instance.age;
+        return _instance.player_age;
     }
 
     #endregion

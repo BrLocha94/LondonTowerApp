@@ -73,6 +73,8 @@ public class SceneController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
+        PlayerData.instance().FlushData();
+
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
     }
 }

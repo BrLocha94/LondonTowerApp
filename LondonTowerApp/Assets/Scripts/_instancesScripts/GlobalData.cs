@@ -50,6 +50,24 @@ public class GlobalData : MonoBehaviour
             Debug.Log("File does not exists");
     }
 
+    public void AddPatient(string name, int age)
+    {
+        Patient new_patient = new Patient(name, age);
+        _instance.patients_data.AddPatient(new_patient);
+        SaveData();
+    }
+
+    void SaveData()
+    {
+        string path = Path.Combine(Application.streamingAssetsPath, "patients-data.json");
+
+        if (File.Exists(path))
+        {
+            string jsonData = JsonUtility.ToJson(_instance.patients_data, true);
+            File.WriteAllText(path, jsonData);
+        }
+    }
+
     public int GetPatiensCount()
     {
         return _instance.patients_data.patients_list.Length;
@@ -69,6 +87,18 @@ public class GlobalData : MonoBehaviour
     public class PatientData
     {
         public Patient[] patients_list;
+
+        public void AddPatient(Patient param)
+        {
+            Patient[] new_list = new Patient[patients_list.Length + 1];
+            for(int i = 0; i < patients_list.Length; i++)
+            {
+                new_list[i] = patients_list[i];
+            }
+            new_list[new_list.Length - 1] = param;
+
+            this.patients_list = new_list;
+        }
     }
 
     [System.Serializable]
@@ -76,5 +106,13 @@ public class GlobalData : MonoBehaviour
     {
         public string name;
         public int age;
+
+        public Patient() { }
+
+        public Patient(string new_name, int new_age)
+        {
+            this.name = new_name;
+            this.age = new_age;
+        }
     }
 }

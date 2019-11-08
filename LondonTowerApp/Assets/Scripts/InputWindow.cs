@@ -68,7 +68,8 @@ public class InputWindow : MonoBehaviour
 
     public void OutTransition()
     {
-
+        PlayerData.instance().SetPlayerName(name_input_field.text);
+        PlayerData.instance().SetPlayerAge(int.Parse(age_input_field.text));
 
         StartCoroutine(OutTransitionRoutine());
     }

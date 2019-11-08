@@ -15,9 +15,6 @@ public class ResultsController : MonoBehaviour
         {
             GameObject newObject = Instantiate(info_prefab.gameObject, panel_list.transform);
             newObject.GetComponent<CardBox>().UpdateCardInfo(i);
-
-
         }
 	}
-	
 }
