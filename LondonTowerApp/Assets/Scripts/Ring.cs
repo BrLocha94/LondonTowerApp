@@ -7,20 +7,13 @@ public class Ring : MonoBehaviour
     [SerializeField]
     private int value;
 
-    GameObject current_parent;
+    void Update()
+    {
+        //Debug.Log("Ring " + value + " " + gameObject.transform.position); 
+    }
 
     public int getValue()
     {
         return value;
-    }
-
-    public void setCurrentParent(GameObject param)
-    {
-        current_parent = param;
-    }
-
-    public GameObject getCurrentParent()
-    {
-        return current_parent;
     }
 }

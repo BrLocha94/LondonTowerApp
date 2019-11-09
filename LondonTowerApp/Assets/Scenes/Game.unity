@@ -682,6 +682,17 @@ MonoBehaviour:
   - {fileID: 886373601}
   levels:
   - {fileID: 114118818864203614, guid: d1d464c8d1aa94b42be57415d28acc33, type: 2}
+  - {fileID: 114703483738940418, guid: cd9e5fbe41170b44fa588b7518949c59, type: 2}
+  - {fileID: 114230668426351904, guid: 0934361dc83e73a40a7962fcf7e9f540, type: 2}
+  - {fileID: 114546345217534146, guid: be2908f76c594064996fb91967a3dea2, type: 2}
+  - {fileID: 114854157137267356, guid: e47072bf54b33f942a1475825924529a, type: 2}
+  - {fileID: 114068909003633580, guid: bd5f3cd4198d2e64991124c563681980, type: 2}
+  - {fileID: 114558897639905598, guid: 7e559ef04690b1c409308d7386f93e73, type: 2}
+  - {fileID: 114187741280168028, guid: 9d89661128a4ac5428d7b84e63c61c3d, type: 2}
+  - {fileID: 114078259357763148, guid: 6a2f48a4b9b724c4bacc438b8b4b59fb, type: 2}
+  - {fileID: 114302971059442896, guid: e8ea0bd5431803e418059fe790517db7, type: 2}
+  - {fileID: 114445860597470782, guid: 668a7e0611a0a7c4097de9064bdc43c6, type: 2}
+  - {fileID: 114780615890229434, guid: ef599eb44f1619e458e192baaf8418be, type: 2}
 --- !u!4 &298989756
 Transform:
   m_ObjectHideFlags: 0
@@ -942,7 +953,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 746828625}
-        m_MethodName: onTowerClick
+        m_MethodName: OnTowerClick
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 5fe3fa366a568b147aff882c4ae077c1,
@@ -3224,6 +3235,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 114371784583371910, guid: 84007d23fcc01dd4a9878e8ac411665f,
+          type: 2}
+        m_MethodName: playButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!222 &1192436732
@@ -4068,6 +4091,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 114371784583371910, guid: 84007d23fcc01dd4a9878e8ac411665f,
+          type: 2}
+        m_MethodName: playButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1440776872
@@ -4837,7 +4872,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1262336794}
-        m_MethodName: onTowerClick
+        m_MethodName: OnTowerClick
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 5fe3fa366a568b147aff882c4ae077c1,
@@ -5095,7 +5130,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 496635456}
-        m_MethodName: onTowerClick
+        m_MethodName: OnTowerClick
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 5fe3fa366a568b147aff882c4ae077c1,

@@ -52,14 +52,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rings_tower_01:
-  - {fileID: 114365142904434066, guid: 7ce8ef10b8653bc4193203c1fd7b63a2, type: 2}
+  - {fileID: 114393695541048752, guid: 81eaee641bc428c46bb9b1df2a08228f, type: 2}
   rings_tower_02:
-  - {fileID: 0}
+  - {fileID: 114365142904434066, guid: 7ce8ef10b8653bc4193203c1fd7b63a2, type: 2}
   rings_tower_03:
-  - {fileID: 0}
-  initial_config_tower_01:
-  - {fileID: 0}
-  initial_config_tower_02: []
+  - {fileID: 114051836891765802, guid: 431c648eb1d4d7f4ab44aed954bbd0ab, type: 2}
+  initial_config_tower_01: []
+  initial_config_tower_02:
+  - {fileID: 114393695541048752, guid: 81eaee641bc428c46bb9b1df2a08228f, type: 2}
   initial_congif_tower_03:
   - {fileID: 114051836891765802, guid: 431c648eb1d4d7f4ab44aed954bbd0ab, type: 2}
-  - {fileID: 0}
+  - {fileID: 114365142904434066, guid: 7ce8ef10b8653bc4193203c1fd7b63a2, type: 2}

@@ -24,8 +24,7 @@ public class InputWindow : MonoBehaviour
             else
                 Debug.Log("Cant find game controller using tag");
         }
-        else
-            Debug.Log("Game Controller is not deffined");
+        
     }
 
     public void CheckInputs()

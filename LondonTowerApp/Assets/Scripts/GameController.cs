@@ -38,6 +38,18 @@ public class GameController : MonoBehaviour
 	
     void setInitialConfig()
     {
+        for (int i = 0; i < towers.Length; i++)
+        {
+            Debug.Log("Flush tower " + (i + 1) + " data");
+            towers[i].FlushData();
+        }
+
+        for(int i = 0; i < towers.Length; i++)
+        {
+            towers[i].DebugConfig();
+        }
+
+        Debug.Log("Current Level " + current_level);
         Level level = levels[current_level];
 
         Ring[] level_config; Ring ring_object;
@@ -50,37 +62,55 @@ public class GameController : MonoBehaviour
             {
                 ring_object = level_config[j];
 
+                Debug.Log("Tower " + (i + 1) + " ring " + ring_object.getValue());
+
                 if (ring_object.getValue() == rings[0].getValue())
                 {
-                    rings[0].transform.position = towers[i].getPosition(j).position;
-                    towers[i].addRing(rings[0]);
+                    Debug.Log("Entrou 1");
+                    Debug.Log("Position : " + towers[i].GetPosition(j).position);
+                    rings[0].transform.position = towers[i].GetPosition(j).position;
+                    Debug.Log("Position 02 : " + rings[0].transform.position);
+                    towers[i].AddRing(rings[0]);
+                    Debug.Log("Position 03: " + rings[0].transform.position);
                 }
                 else if (ring_object.getValue() == rings[1].getValue())
                 {
-                    rings[1].transform.position = towers[i].getPosition(j).position;
-                    towers[i].addRing(rings[1]);
+                    Debug.Log("Entrou 2");
+                    Debug.Log("Position : " + towers[i].GetPosition(j).position);
+                    rings[1].transform.position = towers[i].GetPosition(j).position;
+                    Debug.Log("Position 02 : " + rings[1].transform.position);
+                    towers[i].AddRing(rings[1]);
+                    Debug.Log("Position 03 : " + rings[1].transform.position);
                 }
                 else if (ring_object.getValue() == rings[2].getValue())
                 {
-                    rings[2].transform.position = towers[i].getPosition(j).position;
-                    towers[i].addRing(rings[2]);
+                    Debug.Log("Entrou 3");
+                    Debug.Log("Position : " + towers[i].GetPosition(j).position);
+                    rings[2].transform.position = towers[i].GetPosition(j).position;
+                    Debug.Log("Position 02 : " + rings[2].transform.position);
+                    towers[i].AddRing(rings[2]);
+                    Debug.Log("Position 03 : " + rings[2].transform.position);
                 }
             }
 
             level_config = null;
             ring_object = null;
         }
-
+        
         window_manager.updateHud();
     }
 
-    public void advanceLevel()
+    void advanceLevel()
     {
         current_level++;
         if (current_level >= levels.Length)
             gameOverRoutine();
         else
+        {
+            is_holding = false;
+            checking = false;
             setInitialConfig();
+        }
     }
 
     void gameClearRoutine()
@@ -107,7 +137,7 @@ public class GameController : MonoBehaviour
 
             //Debug.Log("Level " + i);
 
-            if (towers[i].getCurrentRingsCount() != level_clear_config.Length)
+            if (towers[i].GetCurrentRingsCount() != level_clear_config.Length)
             {
                 //Debug.Log("Tower " + i + " config is not correct");
                 return false;
@@ -119,7 +149,7 @@ public class GameController : MonoBehaviour
                     //Debug.Log("Towers " + j);
 
                     ring_object = level_clear_config[j];
-                    ring_tower = towers[i].getRing(j);
+                    ring_tower = towers[i].GetRing(j);
 
                     if (ring_object.getValue() != ring_tower.getValue())
                     {
@@ -232,9 +262,9 @@ public class GameController : MonoBehaviour
 
         SoundController.instance().playMovement();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.2f);
 
-        setCurrentRing(null);
+        current_ring = null;
 
         bool result = checkGameClear();
 

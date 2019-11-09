@@ -28,21 +28,23 @@ public class Tower : MonoBehaviour
         }
 	}
 	
-    public void onTowerClick(AudioClip param)
+    public void OnTowerClick(AudioClip param)
     {
+        Debug.Log("CURRENT RINGS COUNT " + current_rings.Count);
+
         if (!controller.getChecking())
         {
             if (controller.getIsHolding())
             {
                 if (current_rings.Count < capacity)
-                    downCurrentRing();
+                    DownCurrentRing();
                 else
                     SoundController.instance().playError();
             }
             else
             {
                 if (current_rings.Count > 0)
-                    upLastRing();
+                    UpLastRing();
                 else
                     SoundController.instance().playError();
             }
@@ -51,17 +53,22 @@ public class Tower : MonoBehaviour
             Debug.Log("Controller is checking, waiting to return");
     }
 
-    public void addRing(Ring param)
+    public void AddRing(Ring param)
     {
         current_rings.Add(param);
     }
 
-    public void clearRings()
+    public void FlushData()
     {
-        current_rings = new List<Ring>();
+        for(int i = current_rings.Count - 1; i >= 0; i--)
+        {
+            current_rings.RemoveAt(i);
+        }
+        //current_rings = new List<Ring>();
+        Debug.Log(current_rings.Count);
     }
 
-    public void upLastRing()
+    public void UpLastRing()
     {
         if(current_rings.Count > 0)
         {
@@ -72,7 +79,7 @@ public class Tower : MonoBehaviour
         }
     }
 
-    public void downCurrentRing()
+    public void DownCurrentRing()
     {
         if (current_rings.Count < capacity)
         {
@@ -82,7 +89,7 @@ public class Tower : MonoBehaviour
         }
     }
 
-    public Ring getRing(int index)
+    public Ring GetRing(int index)
     {
         if(index >= current_rings.Count)
         {
@@ -93,12 +100,12 @@ public class Tower : MonoBehaviour
         return current_rings[index];
     }
 
-    public int getCurrentRingsCount()
+    public int GetCurrentRingsCount()
     {
         return current_rings.Count;
     }
 
-    public int getValueCount()
+    public int GetValueCount()
     {
         int result = 0;
 
@@ -110,8 +117,17 @@ public class Tower : MonoBehaviour
         return result;
     }
 
-    public Transform getPosition(int param)
+    public Transform GetPosition(int param)
     {
         return positions[param];
+    }
+
+    public void DebugConfig()
+    {
+        Debug.Log("Current rings cont = " + current_rings.Count + " Capacity " + capacity);
+        for(int i = 0; i < current_rings.Count; i++)
+        {
+            Debug.Log("RING " + i + " " + current_rings[i].getValue());
+        }
     }
 }
