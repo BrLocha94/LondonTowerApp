@@ -23,6 +23,18 @@
         {
             "name": "papai noel",
             "age": 66
+        },
+        {
+            "name": "",
+            "age": 0
+        },
+        {
+            "name": "",
+            "age": 0
+        },
+        {
+            "name": "",
+            "age": 0
         }
     ]
 }

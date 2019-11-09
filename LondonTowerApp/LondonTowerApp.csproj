@@ -255,6 +255,7 @@
     <Compile Include="Assets\Scripts\Level.cs" />
     <Compile Include="Assets\Scripts\Manager.cs" />
     <Compile Include="Assets\Scripts\ResultsController.cs" />
+    <Compile Include="Assets\Scripts\ResultsWindow.cs" />
     <Compile Include="Assets\Scripts\Ring.cs" />
     <Compile Include="Assets\Scripts\Tower.cs" />
     <Compile Include="Assets\Scripts\TutorialController.cs" />

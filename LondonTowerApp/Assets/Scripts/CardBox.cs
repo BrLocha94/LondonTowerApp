@@ -14,4 +14,19 @@ public class CardBox : MonoBehaviour
         text_age.text = "Idade: " + GlobalData.instance().GetPatientAge(value);
     }
 
+    public string GetCardName(int value)
+    {
+        return GlobalData.instance().GetPatientName(value);
+    }
+
+    public void OnCardClicked()
+    {
+        ResultsController controller = GameObject.FindObjectOfType<ResultsController>();
+        if (controller != null)
+        {
+            controller.InTransition(this);
+        }
+        else
+            Debug.Log("Cant find results controller in the scene");
+    }
 }
