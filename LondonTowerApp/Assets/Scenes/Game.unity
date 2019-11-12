@@ -538,6 +538,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 455372635}
+        m_MethodName: ChangeSprite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!222 &202543117
@@ -1077,6 +1088,7 @@ GameObject:
   - component: {fileID: 455372632}
   - component: {fileID: 455372634}
   - component: {fileID: 455372633}
+  - component: {fileID: 455372635}
   m_Layer: 5
   m_Name: Image-mute
   m_TagString: Untagged
@@ -1135,6 +1147,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 455372631}
+--- !u!114 &455372635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 455372631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e859ea0836556474aa4cd0e174f1aa18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: b54524306c7ab234d8aea49f9389c38d, type: 3}
+  - {fileID: 21300000, guid: fd9e3d11a26f0ea4493800a3cd467ae6, type: 3}
+  is_sound: 0
 --- !u!1 &486945338
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,7 +1298,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 114371784583371910, guid: 84007d23fcc01dd4a9878e8ac411665f,
           type: 2}
-        m_MethodName: changeEnabled
+        m_MethodName: ChangeEnabled
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 591725728}
+        m_MethodName: ChangeSprite
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1321,7 +1359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -127.200195, y: 160.2998}
+  m_AnchoredPosition: {x: -127.200195, y: 130}
   m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &496635454
@@ -1539,6 +1577,7 @@ GameObject:
   - component: {fileID: 591725725}
   - component: {fileID: 591725727}
   - component: {fileID: 591725726}
+  - component: {fileID: 591725728}
   m_Layer: 5
   m_Name: Image-mute
   m_TagString: Untagged
@@ -1583,7 +1622,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 33b1200dc838754498c32d6508f161c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57ded7ab267a09741b7bc0572f9089ea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1597,6 +1636,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 591725724}
+--- !u!114 &591725728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 591725724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e859ea0836556474aa4cd0e174f1aa18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 57ded7ab267a09741b7bc0572f9089ea, type: 3}
+  - {fileID: 21300000, guid: 33b1200dc838754498c32d6508f161c9, type: 3}
+  is_sound: 1
 --- !u!1 &600712358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,7 +1944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -140}
+  m_AnchoredPosition: {x: 0, y: -170}
   m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &746828623
@@ -3419,7 +3473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 127.200195, y: 160.2998}
+  m_AnchoredPosition: {x: 127.200195, y: 130}
   m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1262336792

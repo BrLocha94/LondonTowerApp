@@ -45,12 +45,12 @@ public class SoundController : MonoBehaviour
         return _instance;
     }
 
-    public bool getEnabled()
+    public bool GetEnabled()
     {
         return _instance.is_enabled;
     }
 
-    public void changeEnabled()
+    public void ChangeEnabled()
     {
         _instance.is_enabled = !_instance.is_enabled;
 
