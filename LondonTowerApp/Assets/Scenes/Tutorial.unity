@@ -1874,6 +1874,7 @@ MonoBehaviour:
   tutorial_text: {fileID: 244124281}
   tutorial_steps:
   - {fileID: 682688844}
+  - {fileID: 682688844}
   - {fileID: 973235217}
   - {fileID: 222164750}
   - {fileID: 1777965335}
@@ -1882,16 +1883,19 @@ MonoBehaviour:
   - {fileID: 528448503}
   - {fileID: 109169985}
   - {fileID: 1665725742}
+  - {fileID: 1665725742}
   texts:
-  - Escreva seu nome e idade nos campos indicados e aperte Enter
-  - "Aperte no bot\xE3o "
-  - "Este \xE9 o jogo. Seu objetivo \xE9 imitar nas torres o que est\xE1 no objetivo"
+  - "Bem vindo ao tutorial! Toque nas laterais da tela para avan\xE7ar/retroceder."
+  - Escreva seu nome e idade nos campos indicados e aperte Enter.
+  - "Aperte no bot\xE3o."
+  - "Este \xE9 o jogo. Seu objetivo \xE9 imitar nas torres o que est\xE1 no objetivo."
   - "Este \xE9 o seu objetivo! "
-  - "Aperte neste bot\xE3o para esconder o objetivo"
-  - "Voc\xEA pode tirar a m\xFAsica do jogo"
+  - "Aperte neste bot\xE3o para esconder o objetivo."
+  - "Voc\xEA pode tirar a m\xFAsica do jogo."
   - "Para mover os discos, basta apertar neles e esperar a anima\xE7\xE3o!"
-  - "Ao fim da anima\xE7\xE3o, voc\xEA deve apertar para onde o disco deve ir"
+  - "Ao fim da anima\xE7\xE3o, voc\xEA deve apertar para onde o disco deve ir."
   - "Agora voc\xEA deve fazer isso para todos os discos at\xE9 chegar no objetivo!"
+  - "Pronto! Voc\xEA est\xE1 preparado para jogar!"
 --- !u!1 &1938007376
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,10 +34,20 @@ public class GlobalData : MonoBehaviour
 
     void Start()
     {
-        string path = Path.Combine(Application.streamingAssetsPath, "patients-data.json");
+        //string path = Path.Combine(Application.streamingAssetsPath, "patients-data.json");
 
-        Debug.Log("PATH : " + path);
+        string path = "Assets/Resources/patients-data.json";
 
+        StreamReader reader = new StreamReader(path);
+        string data_text = reader.ReadToEnd();
+        //Debug.Log(data_text);
+        PatientData data = JsonUtility.FromJson<PatientData>(data_text);
+        _instance.patients_data = data;
+        reader.Close();
+
+        //Debug.Log("PATH : " + path);
+
+        /*
         if (File.Exists(path))
         {
             string data_text = File.ReadAllText(path);
@@ -47,7 +57,15 @@ public class GlobalData : MonoBehaviour
             Debug.Log("Global params data loaded");
         }
         else
-            Debug.Log("File does not exists");
+        {
+        */
+        //path = Path.Combine("jar:file://" + Application.dataPath + "!assets/", "patients-data.json");
+
+        //if (File.Exists(path))
+        //{
+        //    Debug.Log("File does not exists");
+        //}
+        //}
     }
 
     public void AddPatient(string name, int age)
@@ -59,13 +77,20 @@ public class GlobalData : MonoBehaviour
 
     void SaveData()
     {
-        string path = Path.Combine(Application.streamingAssetsPath, "patients-data.json");
+        string path = "Assets/Resources/patients-data.json";
 
-        if (File.Exists(path))
-        {
-            string jsonData = JsonUtility.ToJson(_instance.patients_data, true);
-            File.WriteAllText(path, jsonData);
-        }
+        StreamWriter writer = new StreamWriter(path, false);
+        string jsonData = JsonUtility.ToJson(_instance.patients_data, true);
+        writer.Write(jsonData);
+        writer.Close();
+
+        //string path = Path.Combine(Application.streamingAssetsPath, "patients-data.json");
+
+        //if (File.Exists(path))
+        //{
+        //    string jsonData = JsonUtility.ToJson(_instance.patients_data, true);
+        //    File.WriteAllText(path, jsonData);
+        //}
     }
 
     public int GetPatiensCount()
