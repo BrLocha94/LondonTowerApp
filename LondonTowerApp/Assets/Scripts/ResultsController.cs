@@ -50,7 +50,8 @@ public class ResultsController : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             GameObject newObject = Instantiate(info_prefab.gameObject, panel_list.transform);
-            newObject.GetComponent<CardBox>().UpdateCardInfo(i);
+            newObject.GetComponent<CardBox>().SetIndex(i);
+            newObject.GetComponent<CardBox>().UpdateCardInfo();
             actual_cards.Add(newObject.GetComponent<CardBox>());
         }
     }
@@ -60,7 +61,7 @@ public class ResultsController : MonoBehaviour
         if (results_window != null)
         {
             block.SetActive(true);
-            results_window.InTransition();
+            results_window.InTransition(card.GetIndex());
         }
         else
             Debug.Log("Results window is not deffined");
@@ -92,9 +93,10 @@ public class ResultsController : MonoBehaviour
             for (int i = 0; i < count; i++)
             {
                 GameObject newObject = Instantiate(info_prefab.gameObject, panel_list.transform);
-                if (newObject.GetComponent<CardBox>().GetCardName(i).Equals(param))
+                newObject.GetComponent<CardBox>().SetIndex(i);
+                if (newObject.GetComponent<CardBox>().GetCardName().Equals(param))
                 {
-                    newObject.GetComponent<CardBox>().UpdateCardInfo(i);
+                    newObject.GetComponent<CardBox>().UpdateCardInfo();
                     actual_cards.Add(newObject.GetComponent<CardBox>());
                 }
                 else

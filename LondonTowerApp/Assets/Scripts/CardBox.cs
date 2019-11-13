@@ -7,16 +7,20 @@ public class CardBox : MonoBehaviour
 {
     public Text text_name;
     public Text text_age;
+    public Text text_date;
 
-    public void UpdateCardInfo(int value)
+    int index = 0;
+
+    public void UpdateCardInfo()
     {
-        text_name.text = "Nome: " + GlobalData.instance().GetPatientName(value);
-        text_age.text = "Idade: " + GlobalData.instance().GetPatientAge(value);
+        text_name.text = "Nome: " + GlobalData.instance().GetPatientName(index);
+        text_age.text = "Idade: " + GlobalData.instance().GetPatientAge(index);
+        text_date.text = "Data: " + GlobalData.instance().GetPatientDate(index);
     }
 
-    public string GetCardName(int value)
+    public string GetCardName()
     {
-        return GlobalData.instance().GetPatientName(value);
+        return GlobalData.instance().GetPatientName(index);
     }
 
     public void OnCardClicked()
@@ -28,5 +32,15 @@ public class CardBox : MonoBehaviour
         }
         else
             Debug.Log("Cant find results controller in the scene");
+    }
+
+    public void SetIndex(int value)
+    {
+        index = value;
+    }
+
+    public int GetIndex()
+    {
+        return index;
     }
 }

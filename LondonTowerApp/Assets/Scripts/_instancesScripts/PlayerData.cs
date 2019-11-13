@@ -8,8 +8,9 @@ public class PlayerData : MonoBehaviour
 
     string player_name = "";
     int player_age = 0;
-    List<int> level_movements;
-
+    List<Storager> player_level_data;
+    
+    
     private static PlayerData _instance;
     public static PlayerData instance()
     {
@@ -40,14 +41,14 @@ public class PlayerData : MonoBehaviour
 
     public void SaveData()
     {
-        GlobalData.instance().AddPatient(_instance.player_name, _instance.player_age);
+        GlobalData.instance().AddPatient(_instance.player_name, _instance.player_age, _instance.player_level_data);
     }
 
     public void FlushData()
     {
-        for (int i = 0; i < levels; i++)
+        for (int i = _instance.player_level_data.Count - 1; i >= 0; i++)
         {
-            _instance.level_movements.RemoveAt(0);
+            _instance.player_level_data.RemoveAt(0);
         }
 
         StartData();
@@ -55,28 +56,17 @@ public class PlayerData : MonoBehaviour
 
     void StartData()
     {
-        _instance.level_movements = new List<int>();
-
-        for (int i = 0; i < levels; i++)
-        {
-            _instance.level_movements.Add(0);
-        }
-
         _instance.player_name = "";
         _instance.player_age = 0;
+        _instance.player_level_data = new List<Storager>();
+    }
+
+    public void AddStorageItem(float new_time, int new_movements)
+    {
+        _instance.player_level_data.Add(new Storager(new_time, new_movements));
     }
 
     #region GETS AND SETS
-
-    public List<int> GetLevelMovements()
-    {
-        return _instance.level_movements;
-    }
-
-    public void SetLevelMovement(int param, int value)
-    {
-        _instance.level_movements[param] = value;
-    }
 
     public void SetPlayerName(string value)
     {
@@ -96,6 +86,41 @@ public class PlayerData : MonoBehaviour
     public int GetPlayerAge()
     {
         return _instance.player_age;
+    }
+
+    public List<Storager> GetPlayerLevelData()
+    {
+        return _instance.player_level_data;
+    }
+
+    public float GetPlayerTotalTime()
+    {
+        float count = 0f;
+
+        Debug.Log(_instance.player_level_data.Count);
+
+        for(int i = 0; i < _instance.player_level_data.Count; i++)
+        {
+            count += _instance.player_level_data[i].time;
+        }
+
+        Debug.Log("AQUI " + count);
+
+        return count;
+    }
+
+    public float GetPlayerTotalMovements()
+    {
+        int count = 0;
+
+        for (int i = 0; i < _instance.player_level_data.Count; i++)
+        {
+            count += _instance.player_level_data[i].movements;
+        }
+
+        Debug.Log("AQUI  2 " + count);
+
+        return count;
     }
 
     #endregion

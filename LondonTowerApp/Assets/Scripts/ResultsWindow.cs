@@ -1,13 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResultsWindow : MonoBehaviour
 {
     public ResultsController controller;
+    public Text title;
+    public Text results_1;
+    public Text results_2;
 
-    public void InTransition()
+    void ProcessData(int index)
     {
+        title.text = "NOME: " + GlobalData.instance().GetPatientName(index) + 
+                            "    IDADE: " + GlobalData.instance().GetPatientAge(index) + 
+                            " DATA: " + GlobalData.instance().GetPatientDate(index) ;
+
+        List<Storager> list = GlobalData.instance().GetPatientStorageData(index);
+
+        for(int i = 0; i < list.Count; i++)
+        {
+            if(i < 6)
+                results_1.text += "Level " + (i + 1).ToString() + ": Tempo = " + list[i].time.ToString("F2") + ": Movimentos = " + list[i].movements + "\n";
+            else
+                results_2.text += "Level " + (i + 1).ToString() + ": Tempo = " + list[i].time.ToString("F2") + ": Movimentos = " + list[i].movements + "\n";
+        }
+    }
+
+    public void InTransition(int index)
+    {
+        ProcessData(index);
+
         StartCoroutine(InTransitionRoutine());
     }
 

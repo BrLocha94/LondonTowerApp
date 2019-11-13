@@ -1,13 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameClearWindow : MonoBehaviour
 {
     public Manager manager;
+    public Text congrats_text;
+
+    void ProcessInfo()
+    {
+        congrats_text.text = PlayerData.instance().GetPlayerName() + " concluiu o teste em " + PlayerData.instance().GetPlayerTotalTime().ToString() +
+                             " segundos e fez " + PlayerData.instance().GetPlayerTotalMovements().ToString() + " movimentos no total!";
+    }
 
     public void InTransition()
     {
+        ProcessInfo();
+
         StartCoroutine(InTransitionRoutine());
     }
 

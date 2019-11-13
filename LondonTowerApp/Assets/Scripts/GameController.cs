@@ -23,12 +23,25 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private Level[] levels;
 
+    int movements = 0;
+    float time = 0f;
+    bool count = false;
+
 	void Start ()
     {
         block.SetActive(true);
         window_input.InTransition();
         //setInitialConfig();
 	}
+
+    void Update()
+    {
+        if(count == true)
+        {
+            time += Time.deltaTime;
+            //Debug.Log("TIME " + time);
+        }
+    }
 
     public void startGame()
     {
@@ -40,7 +53,7 @@ public class GameController : MonoBehaviour
     {
         for (int i = 0; i < towers.Length; i++)
         {
-            Debug.Log("Flush tower " + (i + 1) + " data");
+            //Debug.Log("Flush tower " + (i + 1) + " data");
             towers[i].FlushData();
         }
 
@@ -49,7 +62,7 @@ public class GameController : MonoBehaviour
             towers[i].DebugConfig();
         }
 
-        Debug.Log("Current Level " + current_level);
+        //Debug.Log("Current Level " + current_level);
         Level level = levels[current_level];
 
         Ring[] level_config; Ring ring_object;
@@ -62,34 +75,22 @@ public class GameController : MonoBehaviour
             {
                 ring_object = level_config[j];
 
-                Debug.Log("Tower " + (i + 1) + " ring " + ring_object.getValue());
+                //Debug.Log("Tower " + (i + 1) + " ring " + ring_object.getValue());
 
                 if (ring_object.getValue() == rings[0].getValue())
                 {
-                    Debug.Log("Entrou 1");
-                    Debug.Log("Position : " + towers[i].GetPosition(j).position);
                     rings[0].transform.position = towers[i].GetPosition(j).position;
-                    Debug.Log("Position 02 : " + rings[0].transform.position);
                     towers[i].AddRing(rings[0]);
-                    Debug.Log("Position 03: " + rings[0].transform.position);
                 }
                 else if (ring_object.getValue() == rings[1].getValue())
                 {
-                    Debug.Log("Entrou 2");
-                    Debug.Log("Position : " + towers[i].GetPosition(j).position);
                     rings[1].transform.position = towers[i].GetPosition(j).position;
-                    Debug.Log("Position 02 : " + rings[1].transform.position);
                     towers[i].AddRing(rings[1]);
-                    Debug.Log("Position 03 : " + rings[1].transform.position);
                 }
                 else if (ring_object.getValue() == rings[2].getValue())
                 {
-                    Debug.Log("Entrou 3");
-                    Debug.Log("Position : " + towers[i].GetPosition(j).position);
                     rings[2].transform.position = towers[i].GetPosition(j).position;
-                    Debug.Log("Position 02 : " + rings[2].transform.position);
                     towers[i].AddRing(rings[2]);
-                    Debug.Log("Position 03 : " + rings[2].transform.position);
                 }
             }
 
@@ -98,13 +99,19 @@ public class GameController : MonoBehaviour
         }
         
         window_manager.updateHud();
+
+        time = 0f;
+        movements = 0;
+        count = true;
     }
 
     void advanceLevel()
     {
         current_level++;
         if (current_level >= levels.Length)
-            gameOverRoutine();
+        { 
+            StartCoroutine(gameOverRoutine());
+        }
         else
         {
             is_holding = false;
@@ -119,9 +126,12 @@ public class GameController : MonoBehaviour
         advanceLevel();
     }
 
-    void gameOverRoutine()
+    IEnumerator gameOverRoutine()
     {
         block.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+
         window_clear.InTransition();
     }
 
@@ -235,6 +245,7 @@ public class GameController : MonoBehaviour
     {
         checking = true;
 
+        movements++;
         //Debug.Log("Initiated mode down routine");
 
         StartCoroutine(moveDown(pos_target, pos_destiny));
@@ -270,6 +281,8 @@ public class GameController : MonoBehaviour
 
         if (result == true)
         {
+            Debug.Log("time and moviments " + time + " " + movements);
+            PlayerData.instance().AddStorageItem(time, movements);
             gameClearRoutine();
         }
         else
