@@ -252,6 +252,7 @@
     <Compile Include="Assets\Scripts\ButtonShiffter.cs" />
     <Compile Include="Assets\Scripts\CardBox.cs" />
     <Compile Include="Assets\Scripts\ClearPrefs.cs" />
+    <Compile Include="Assets\Scripts\CongratsWindow.cs" />
     <Compile Include="Assets\Scripts\GameClearWindow.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\InputWindow.cs" />

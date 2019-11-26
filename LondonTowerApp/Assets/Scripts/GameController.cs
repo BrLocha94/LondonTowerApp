@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     Ring current_ring = null;
 
     public WindowManager window_manager;
+    public CongratsWindow window_congrats;
     public GameClearWindow window_clear;
     public GameObject block;
     public InputWindow window_input;
@@ -114,10 +115,17 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            is_holding = false;
-            checking = false;
-            setInitialConfig();
+            block.SetActive(true);
+            window_congrats.InTransition();
         }
+    }
+
+    public void AdvanceGame()
+    {
+        block.SetActive(false);
+        is_holding = false;
+        checking = false;
+        setInitialConfig();
     }
 
     void gameClearRoutine()
